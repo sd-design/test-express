@@ -12,6 +12,8 @@ app.set('view engine', 'ejs')
 app.set('views', path.resolve(__dirname, 'templates'))
 console.log(app.get('views'))
 app.use(express.static(path.resolve(__dirname, 'static')))
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 app.use(requestTime)
 app.use(logger)
 app.use(serverRoutes)
@@ -33,6 +35,10 @@ app.get('/', (req, res) => {
 app.get('/features', (req, res) => {
 	//res.send('<h1>Hi Express</h1>')
 	res.status(200).render('features', {title: 'Features page', active: 'features'})
+})
+app.get('/app', (req, res) => {
+	//res.send('<h1>Hi Express</h1>')
+	res.status(200).render('app', {title: 'Vue application', active: 'app'})
 })
 
 app.listen(port, ()=>{

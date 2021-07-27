@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="ru"><head>
+	<%- include('./parts/header');%>
+</head>
+<body>
+	<div class="container pt-3">
+		<%- include('./parts/navbar');%>
+	<h2 class="display-2"><%= title%></h2>
+	<div id="app">
+		<form @submit.prevent="createServer">
+			<div class="col-4 mb-3">
+			<input type="text" class="form-control" v-model="name">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<div class="text-center loader" v-if="servers.length === 0">
+			<div class="spinner-border text-info" role="status">
+			<span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
+		<table class="table table-striped" v-else>
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="server in servers"><th scope="row">{{server.id}}</th><td>{{server.name}}</td><td>{{server.status}}</td></tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="/app.js"></script>
+</body>
+</html>
