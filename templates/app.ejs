@@ -23,10 +23,13 @@
 					<th scope="col">#</th>
 					<th scope="col">Name</th>
 					<th scope="col">Status</th>
+					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="server in servers"><th scope="row">{{server.id}}</th><td>{{server.name}}</td><td>{{server.status}}</td></tr>
+				<tr v-for="server in servers">
+					<th scope="row">{{server.id}}</th><td>{{server.name}}</td><td>{{server.status}}</td><td><button class="btn btn-danger btn-sm" @click="remove(server.id)">x</button></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

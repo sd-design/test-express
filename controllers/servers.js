@@ -18,3 +18,9 @@ export const create = (req, res) => {
 	servers.push(newServer)
 	res.status(201).json(newServer)
 }
+
+export const remove = (req, res) => {
+	servers = servers.filter(s => s.id !== req.params.id)
+	console.log('ID', req.params.id)
+	res.json({message: 'Item was removed'})
+}

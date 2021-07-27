@@ -11,3 +11,8 @@ export function logger (req, res, next) {
 	console.log(colors.bgGreen.black(`log.time: ${req.requestTime}`))
 	next()
 }
+
+export function myHeader (req, res, next) {
+  res.setHeader("X-Powered-By", "Solovey app");
+  next();
+}
